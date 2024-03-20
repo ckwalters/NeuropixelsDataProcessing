@@ -48,10 +48,8 @@ def run_catgt(run_list,tools_path,input_path,output_path,probes,event_bits,nidq=
 
 
 def preprocess_sglxdata(sessions,car=None,highpass_filter=None,process_nidq=True):
-    """In my terminology, a session is a group of runs that you want to
-    concatenate and sort together. A run is any time SGLX starts/stops
-    recording, and consists of n number of (imec) recordings, where n is the
-    number of probes.
+    """In my terminology, a run is any time SGLX starts/stops recording,
+    and consists of n number of (imec) recordings, where n is the number of probes.
     """
     # Set these up for your computer & rig
     tools_path = os.path.join('C:\\','SpikeGLX','Tools')
