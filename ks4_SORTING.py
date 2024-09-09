@@ -43,7 +43,7 @@ def find_channelmap(recording_path):
     files = os.listdir(recording_path)
     found_map = False
     for file in files:
-        if 'kilosortChanMap_TRUE' in file:
+        if 'kilosortChanMap' in file:
             found_map = True
             return Path(os.path.join(recording_path,file))
     if not found_map:
@@ -54,6 +54,7 @@ def main():
 
     for recording_path in recording_paths:
         make_channelmap(recording_path)
+        ## TODO: Kilosort will not automatically find the true sampling rate from SGLX metadata. Input it as a param here.
         settings = {'data_dir': recording_path, 'n_chan_bin': 385, 'nblocks':0} # set nblocks to 0 to disable drift correction
         probe_dict = load_probe(find_channelmap(recording_path))
         run_kilosort(settings=settings, probe=probe_dict)
