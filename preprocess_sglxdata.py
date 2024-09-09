@@ -1,5 +1,10 @@
 import os
 
+# Set these up for your computer
+tools_path = os.path.join('C:\\','Users\CKW\Code')
+input_path = os.path.join('N:\\','SGLX_Data')
+output_path = os.path.join('N:\\','CGT_OUT')
+
 def run_catgt(run_list,tools_path,input_path,output_path,probes,event_bits,nidq=True,car=None,filter=None,inverted=False):
     """Run CatGT v3.4
     run_list is a list of run names, including g0
@@ -48,15 +53,9 @@ def run_catgt(run_list,tools_path,input_path,output_path,probes,event_bits,nidq=
 
 
 def preprocess_sglxdata(sessions,car=None,highpass_filter=None,process_nidq=True):
-    """In my terminology, a session is a group of runs that you want to
-    concatenate and sort together. A run is any time SGLX starts/stops
-    recording, and consists of n number of (imec) recordings, where n is the
-    number of probes.
+    """In my terminology, a run is any time SGLX starts/stops recording,
+    and consists of n number of (imec) recordings, where n is the number of probes.
     """
-    # Set these up for your computer & rig
-    tools_path = os.path.join('C:\\','SpikeGLX','Tools')
-    input_path = os.path.join('D:\\','SGLX_Data')
-    output_path = os.path.join('D:\\','CGT_OUT')
     probes = '0:1' # probes is 0 or 0:1 etc.
     event_bits = [1,2] # Your behavior event bits on your NIDAQ stream 
 
@@ -92,4 +91,4 @@ def preprocess_sglxdata(sessions,car=None,highpass_filter=None,process_nidq=True
 
 
 if __name__=='__main__':
-    preprocess_sglxdata(['20240206'],process_nidq=True)
+    preprocess_sglxdata(['20240130'],process_nidq=True)

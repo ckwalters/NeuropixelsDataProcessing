@@ -77,6 +77,6 @@ def run_tprime(run_list,tools_path,catgt_output_path):
 
 if __name__=='__main__':
     tools_path = os.path.join('C:\\','SpikeGLX','Tools')
-    output_path = os.path.join('D:\\','CGT_OUT')
-    runs = ['catgt_20240207_CWF2_00_g0']
+    output_path = os.path.join('N:\\','CGT_OUT')
+    runs = ['catgt_20230731_CWF3_00_g0']
     run_tprime(runs,tools_path,output_path)
