@@ -1,7 +1,6 @@
 import numpy as np
 import os
 from pathlib import Path
-import shutil
 import scipy
 import time
 import json
@@ -84,9 +83,11 @@ class LFPRecording:
         self.downsampled_timestamps = np.load(self.downsampled_timestamps_path, mmap_mode='r')
         self.downsampled_sampling_rate = 1/np.mean(np.diff(self.downsampled_timestamps[1:-1]))
 
-def lfp_power(data,sos,SD=None):
+def lfp_power(data,sos,smooth=True,SD=None):
     """SD = in samples"""
     lfp = scipy.signal.sosfiltfilt(sos, data)
     power = np.abs(np.imag(scipy.signal.hilbert(lfp)))
-    power = scipy.ndimage.gaussian_filter(power,SD,order=0) 
+    if smooth:
+        power = scipy.ndimage.gaussian_filter(power,SD,order=0)
     return power
+    
